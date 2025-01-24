@@ -1,0 +1,40 @@
+SERVER ->
+     1.create a node app using npm init -y
+     2.install express socket.io 
+     3.install cors (for security)
+     4.install nodemon for dev help
+     5. write custom type as module for enabling es6 functionalities.
+     7.Whenever  we  build socket.io server -> we use HTTP HANDSHAKES to initialise
+       and set up the server.
+     8.we are creating a server named io
+     9.io.on ("connection",()=>{}); this handles the connection
+
+
+
+
+CLIENT ->
+1- npm create vite@latest
+2- create a react app with vite
+3- install socket.io-client
+
+
+Description of the chat app
+-> fullstack chat application 
+-> server security enabled using cors
+-> frontend built on react using vite
+-> web RTC implemented using socket.io
+
+
+Socket.emit -> to send a message to a client.
+io.emit -> to send a message to the whole server.
+socket.broadcast.emit -> to send a message to everyone except the sender (more useful)
+socket.on -> to write reciever handling logic of the emit logic
+
+For DM messages that is a person want to send a direct message to other person so we use 
+
+socket.to().emit -> it send msg to a specified client.
+
+
+every client has a specific id -> we can create ROOMs(specific group of people)->  to enabled
+personal messaging we can create a room and only one person in it to allow person 
+to person contact
