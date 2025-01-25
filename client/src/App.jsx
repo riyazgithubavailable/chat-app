@@ -1,4 +1,4 @@
-import { Button, Container, Stack, TextField, Typography } from '@mui/material';
+import { Box, Button, Container, Stack, TextField, Typography } from '@mui/material';
 import React, { useEffect, useMemo, useState } from 'react'
 import { io } from "socket.io-client";
 // this would be responsible for connection client with the server
@@ -45,17 +45,27 @@ function joiningRoom(e){
 }
   return (
     <Container>
-      <Typography variant='h5' component='div'
+      <Typography className='decoration-inherit' style={{color:"blue",textAlign:'center', padding:'1rem'}} variant='h2' component='div'
         gutterBottom
       >Welcome to the chat application built by -Riyaz
       </Typography>
-
+      <Box
+      className="bg-gray-200 p-8 rounded-lg shadow-lg pt-12" 
+      sx={{ display: 'flex',gap:'1.5rem',flexDirection:'column',alignItems: 'center',height: '100%' }}
+    >
       <Typography variant='h5' component='div'
         gutterBottom
       >
         {soketId}
       </Typography>
-      <form onSubmit={handleSubmit}>
+      <form style={{display:'flex',gap:'1rem'}} onSubmit={joiningRoom}>
+      <TextField type='text' placeholder='Type your message here'
+          value={roomName} onChange={(e) => setRoomName(e.target.value)}
+          label='Room Name' variant='outlined'
+        />
+        <Button type='submit' variant='contained' color='primary'>Send</Button>
+      </form>
+      <form style={{display:'flex',gap:'1rem'}} onSubmit={handleSubmit}>
         <TextField type='text' placeholder='Type your message here'
           value={message} onChange={(e) => setMessage(e.target.value)}
           label='Message' variant='outlined'
@@ -66,13 +76,7 @@ function joiningRoom(e){
         />
         <Button type='submit' variant='contained' color='primary'>Send</Button>
       </form>
-      <form onSubmit={joiningRoom}>
-      <TextField type='text' placeholder='Type your message here'
-          value={roomName} onChange={(e) => setRoomName(e.target.value)}
-          label='Room Name' variant='outlined'
-        />
-        <Button type='submit' variant='contained' color='primary'>Send</Button>
-      </form>
+     
       <Stack>
         {
           messages.map((msg, index) => (
@@ -85,6 +89,7 @@ function joiningRoom(e){
           ))
         }
       </Stack>
+      </Box>
     </Container>
   )
 }
